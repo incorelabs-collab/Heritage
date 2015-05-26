@@ -52,6 +52,9 @@ var pageSearchResults = {
                                         case "Blood_Group":
                                             kidsBodyString += "<div class='row kidsItems'><div class='col-xs-10 col-sm-11 pull-left'><h4 class='infoTitleLabel'>Blood Group</h4><h5 class='infoTitleDetail'>"+val+"</h5></div><div class='col-xs-2 col-sm-1 pull-right'><span class='glyphicon glyphicon-tint Icon'></span></div></div>";
                                             break;
+                                        case "Marital_Status":
+                                            kidsBodyString += "<div class='row kidsItems'><div class='col-xs-10 col-sm-11 pull-left'><h4 class='infoTitleLabel'>Marital Status</h4><h5 class='infoTitleDetail'>"+val+"</h5></div><div class='col-xs-2 col-sm-1 pull-right'><span class='glyphicon glyphicon-heart Icon'></span></div></div>";
+                                            break;
                                     }
                                 }
                             });

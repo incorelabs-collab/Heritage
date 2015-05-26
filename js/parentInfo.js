@@ -62,6 +62,9 @@ var pageParentInfo = {
                                         case "Blood_Group":
                                             kidsBodyString += "<div class='row kidsItems'><div class='col-xs-10 col-sm-11 pull-left'><h4 class='infoTitleLabel'>Blood Group</h4><h5 class='infoTitleDetail'>"+val+"</h5></div><div class='col-xs-2 col-sm-1 pull-right'><span class='glyphicon glyphicon-tint Icon'></span></div></div>";
                                             break;
+                                        case "Marital_Status":
+                                            kidsBodyString += "<div class='row kidsItems'><div class='col-xs-10 col-sm-11 pull-left'><h4 class='infoTitleLabel'>Marital Status</h4><h5 class='infoTitleDetail'>"+val+"</h5></div><div class='col-xs-2 col-sm-1 pull-right'><span class='glyphicon glyphicon-heart Icon'></span></div></div>";
+                                            break;
                                     }
                                 }
                             });
@@ -108,7 +111,8 @@ $(document).ready(function() {
             spouseUserId = userId - 1;
             commonMaleId = userId - 1;
         }
-        var buildUserColumnNameQuery = "SELECT sql FROM sqlite_master WHERE type='table' AND name = '"+userTableName+"'";        tx.executeSql(buildUserColumnNameQuery, [],
+        var buildUserColumnNameQuery = "SELECT sql FROM sqlite_master WHERE type='table' AND name = '"+userTableName+"'";
+        tx.executeSql(buildUserColumnNameQuery, [],
             function(tx, r) {
                 var columnParts = r.rows.item(0).sql.replace(/^[^\(]+\(([^\)]+)\)/g, '$1').split(', ');
                 var userColumnNames = [];
@@ -176,6 +180,12 @@ $(document).ready(function() {
                                                                     case "Occupation":
                                                                         parentBodyString += "<div class='row listItems'><div class='col-xs-10 col-sm-11 pull-left'><h4 class='infoTitleLabel'>Occupation</h4><h5 class='infoTitleDetail'>"+val+"</h5></div><div class='col-xs-2 col-sm-1 pull-right'><span class='glyphicon glyphicon-briefcase Icon'></span></div></div>";
                                                                         break;
+                                                                    case "Native":
+                                                                        parentBodyString += "<div class='row listItems'><div class='col-xs-10 col-sm-11 pull-left'><h4 class='infoTitleLabel'>Native</h4><h5 class='infoTitleDetail'>"+val+"</h5></div><div class='col-xs-2 col-sm-1 pull-right'><span class='glyphicon glyphicon-map-marker Icon'></span></div></div>";
+                                                                        break;
+                                                                    case "Membership_ID":
+                                                                        parentBodyString += "<div class='row listItems'><div class='col-xs-10 col-sm-11 pull-left'><h4 class='infoTitleLabel'>Membership ID</h4><h5 class='infoTitleDetail'>"+val+"</h5></div><div class='col-xs-2 col-sm-1 pull-right'><span class='glyphicon glyphicon-credit-card Icon'></span></div></div>";
+                                                                        break;
                                                                     case "off_addr1":
                                                                         parentBodyString += "<div class='row listItems'><div class='col-xs-10 col-sm-11 pull-left'><h4 class='infoTitleLabel'>Office Address</h4><h5 class='infoTitleDetail'>"+val+"<br>";
                                                                         flag = true;
@@ -198,6 +208,9 @@ $(document).ready(function() {
                                                                         break;
                                                                     case "Office_phone":
                                                                         parentBodyString += "<div class='row listItems'><div class='col-xs-10 col-sm-11 pull-left'><h4 class='infoTitleLabel'>Office Phone</h4><h5 class='infoTitleDetail'>"+val+"</h5></div><div class='col-xs-2 col-sm-1 pull-right'><a data-container='body' data-toggle='popover' data-placement='left' data-content=\"<a href='tel:"+val+"'><button class='btn btn-primary'>Call</button></a>\" data-html='true'><span class='glyphicon glyphicon-phone-alt Icon'></span></a></div></div>";
+                                                                        break;
+                                                                    case "BSNL_Centrex":
+                                                                        parentBodyString += "<div class='row listItems'><div class='col-xs-10 col-sm-11 pull-left'><h4 class='infoTitleLabel'>BSNL Centrex (Office)</h4><h5 class='infoTitleDetail'>"+val+"</h5></div><div class='col-xs-2 col-sm-1 pull-right'><span class='glyphicon glyphicon-phone-alt Icon'></span></div></div>";
                                                                         break;
                                                                 }
                                                             }
@@ -223,10 +236,13 @@ $(document).ready(function() {
                                                                         } else {
                                                                             parentBodyString += "<div class='row listItems'><div class='col-xs-10 col-sm-11 pull-left'><h4 class='infoTitleLabel'>Residence PinCode</h4><h5 class='infoTitleDetail'>"+val;
                                                                         }
-                                                                        parentBodyString += "</h5></div><div class='col-xs-2 col-sm-1 pull-right'><span class='glyphicon glyphicon-briefcase Icon'></span></div></div>";
+                                                                        parentBodyString += "</h5></div><div class='col-xs-2 col-sm-1 pull-right'><span class='glyphicon glyphicon-home Icon'></span></div></div>";
                                                                         break;
                                                                     case "Residence_Phone":
                                                                         parentBodyString += "<div class='row listItems'><div class='col-xs-10 col-sm-11 pull-left'><h4 class='infoTitleLabel'>Residence Phone</h4><h5 class='infoTitleDetail'>"+val+"</h5></div><div class='col-xs-2 col-sm-1 pull-right'><a data-container='body' data-toggle='popover' data-placement='left' data-content=\"<a href='tel:"+val+"'><button class='btn btn-primary'>Call</button></a>\" data-html='true'><span class='glyphicon glyphicon-earphone Icon'></span></a></div></div>";
+                                                                        break;
+                                                                    case "BSNL_Centrex":
+                                                                        parentBodyString += "<div class='row listItems'><div class='col-xs-10 col-sm-11 pull-left'><h4 class='infoTitleLabel'>BSNL Centrex (Home)</h4><h5 class='infoTitleDetail'>"+val+"</h5></div><div class='col-xs-2 col-sm-1 pull-right'><span class='glyphicon glyphicon-phone-alt Icon'></span></div></div>";
                                                                         break;
                                                                 }
                                                             }

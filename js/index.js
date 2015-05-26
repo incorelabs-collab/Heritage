@@ -87,7 +87,7 @@ var app = {
 
             localStorage.setItem('dbCurrentOnline',json[0][0]);
 
-            app.requestStatus = [false, false, false, false, false, false, false];
+            app.requestStatus = [false, false, false, false, false, false, false, false, false, false, false, false, false];
 
             $.getJSON('http://heritage.incorelabs.com/users.php', function(userData) {
                 app.createTable(userData,"users",0);
@@ -110,7 +110,25 @@ var app = {
             $.getJSON('http://heritage.incorelabs.com/events.php', function(eventsData) {
                 app.createTable(eventsData,"events",6);
             });
-
+            $.getJSON('http://heritage.incorelabs.com/pastLeaders/founders.php', function(pastFoundersData) {
+                app.createTable(pastFoundersData,"founders",7);
+            });
+            $.getJSON('http://heritage.incorelabs.com/pastLeaders/past_presidents.php', function(pastPresidentsData) {
+                app.createTable(pastPresidentsData,"past_presidents",8);
+            });
+            $.getJSON('http://heritage.incorelabs.com/pastLeaders/past_vice_presidents.php', function(pastVicePresidentsData) {
+                app.createTable(pastVicePresidentsData,"past_vice_presidents",9);
+            });
+            $.getJSON('http://heritage.incorelabs.com/pastLeaders/past_secretaries.php', function(pastSecretariesData) {
+                app.createTable(pastSecretariesData,"past_secretaries",10);
+            });
+            $.getJSON('http://heritage.incorelabs.com/pastLeaders/past_ass_secretaries.php', function(pastAssSecretariesData) {
+                app.createTable(pastAssSecretariesData,"past_ass_secretaries",11);
+            });
+            $.getJSON('http://heritage.incorelabs.com/pastLeaders/past_treasurers.php', function(pastTreasurersData) {
+                app.createTable(pastTreasurersData,"past_treasurers",12);
+            });
+            
         } else {
             // Internet BUT Data is Up to Date.
             app.getImageAssets();
