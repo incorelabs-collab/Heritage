@@ -62,9 +62,6 @@ var pageSearchResults = {
                             $("#kidsHeader").append(kidsHeaderString);
                             $("#kidsBody").append(kidsBodyString);
                             $('#kidsModal').modal('show');
-                            $('#kidsModal').on('shown.bs.modal', function (e) {
-                                $("[data-toggle='popover']").popover();
-                            });
                             kidsHeaderString = "";
                             kidsBodyString = "";
                         },
@@ -78,10 +75,25 @@ var pageSearchResults = {
 }
 $(document).ready(function() {
     $("#searchMaleData").append(localStorage.getItem("maleResultsData"));
+    $("#maleResultsCount").text(localStorage.getItem("maleResultsCount"));
     $("#searchFemaleData").append(localStorage.getItem("femaleResultsData"));
+    $("#femaleResultsCount").text(localStorage.getItem("femaleResultsCount"));
     $("#searchKidsData").append(localStorage.getItem("kidsResultsData"));
+    $("#kidsResultsCount").text(localStorage.getItem("kidsResultsCount"));
     $('body').removeClass();
+    $('#kidsModal').on('shown.bs.modal', function (e) {
+        $("[data-toggle='popover']").popover();
+    });
 });
 $('#searchData').on('shown.bs.collapse', function () {
     $('html, body').animate({scrollTop : 0}, 0);
+});
+$('body').on('click', function (e) {
+    $('[data-toggle="popover"]').each(function () {
+        //the 'is' for buttons that trigger popups
+        //the 'has' for icons within a button that triggers a popup
+        if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+            $(this).popover('hide');
+        }
+    });
 });

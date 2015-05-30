@@ -26,14 +26,11 @@ var app = {
         navigator.splashscreen.show();
         document.addEventListener('backbutton', app.onBackKeyDown, false);
         localStorage.removeItem('backLog');
-        $('#app').toggleClass('hidden');
+        $('#app').toggleClass('hidden');            // Hides the app div.
+        $('#loading').toggleClass('hidden');        // Shows the loading screen.
         setTimeout(function() {
             navigator.splashscreen.hide();
         }, 3000);
-        setTimeout(function () {
-            navigator.splashscreen.hide();
-            $('#startup_splash').remove();
-        }, 6000);
         if(app.imgDb.version == -1) {
             app.imgDb.transaction(function (tx) {
                 tx.executeSql("CREATE TABLE IF NOT EXISTS profile_pic (filename TEXT NOT NULL, timestamp TEXT NOT NULL)",[],
@@ -72,7 +69,8 @@ var app = {
                 } else {
                     app.displayPage("home.html");
                 }
-                $('#app').toggleClass('hidden');
+                $('#loading').toggleClass('hidden');        // Hides the loading screen.
+                $('#app').toggleClass('hidden');            // Shows the app div.
             });
         }
     },
@@ -83,7 +81,6 @@ var app = {
             // TODO :: If the request to the server takes more than 5 seconds. Tell the user the network is slow.
 
             $('#app').empty();                          // Removes everything from the app div.
-            $('#loading').toggleClass('hidden');        // Shows the loading screen.
 
             localStorage.setItem('dbCurrentOnline',json[0][0]);
 
@@ -133,11 +130,12 @@ var app = {
             // Internet BUT Data is Up to Date.
             app.getImageAssets();
             if(app.getBoolean(localStorage.getItem("isUserLoggedIn")) != true) {
-             app.displayPage("login.html");
-             } else {
-             app.displayPage("home.html");
-             }
-            $('#app').toggleClass('hidden');
+                app.displayPage("login.html");
+            } else {
+                app.displayPage("home.html");
+            }
+            $('#loading').toggleClass('hidden');        // Hides the loading screen.
+            $('#app').toggleClass('hidden');            // Shows the app div.
         }
     },
     getImageAssets: function () {
@@ -188,21 +186,18 @@ var app = {
             // NO Internet NO Data.
             //$("#app").append("<h1>Please Connect to the internet. You have NO data.</h1>");
             //$('#app').toggleClass('hidden');
-            if($('#startup_splash').length) {
-                setTimeout(function () {
-                    navigator.notification.confirm("You don't have a working internet connection.", app.onOfflineConfirm, 'Offline', ['Try Again','Exit']);
-                }, 5500);
-            } else {
+            setTimeout(function () {
                 navigator.notification.confirm("You don't have a working internet connection.", app.onOfflineConfirm, 'Offline', ['Try Again','Exit']);
-            }
+            }, 2250);
         } else {
             // No Internet BUT Data is there.
             if(app.getBoolean(localStorage.getItem("isUserLoggedIn")) != true) {
-             app.displayPage("login.html");
-             } else {
-             app.displayPage("home.html");
-             }
-            $('#app').toggleClass('hidden');
+                app.displayPage("login.html");
+            } else {
+                app.displayPage("home.html");
+            }
+            $('#loading').toggleClass('hidden');        // Hides the loading screen.
+            $('#app').toggleClass('hidden');            // Shows the app div.
         }
         var dirReference = app.getDirectoryReference();
         dirReference.done(function(imgDir) {
@@ -224,12 +219,12 @@ var app = {
             if(app.requestStatus.every(app.validateRequest)) {
                 app.getImageAssets();
                 app.dbChangeVersion(0, localStorage.getItem('dbLocalVersion'), localStorage.getItem('dbCurrentOnline'));
-                $('#loading').toggleClass('hidden');        // hides the loading screen again
                 if(app.getBoolean(localStorage.getItem("isUserLoggedIn")) != true) {
                     app.displayPage("login.html");
                 } else {
                     app.displayPage("home.html");
                 }
+                $('#loading').toggleClass('hidden');        // hides the loading screen again
                 $('#app').toggleClass('hidden');            // Show the app div now after data has loaded.
             }
         },app.dbTxError);
