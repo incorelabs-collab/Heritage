@@ -181,11 +181,8 @@ var app = {
         });
     },
     doOfflineTasks: function() {
-        // TODO :: In offline mode. if there is no data. Ask the user. to connect to internet. Give Refresh button.
         if(localStorage.getItem('dbLocalVersion') == -1) {
             // NO Internet NO Data.
-            //$("#app").append("<h1>Please Connect to the internet. You have NO data.</h1>");
-            //$('#app').toggleClass('hidden');
             setTimeout(function () {
                 navigator.notification.confirm("You don't have a working internet connection.", app.onOfflineConfirm, 'Offline', ['Try Again','Exit']);
             }, 2250);
