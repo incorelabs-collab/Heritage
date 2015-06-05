@@ -211,7 +211,7 @@ $(document).ready(function() {
                                                                     case "Office_phone":
                                                                         parentBodyString += "<div class='row listItems'><div class='col-xs-10 col-sm-11 pull-left'><h4 class='infoTitleLabel'>Office Phone</h4><h5 class='infoTitleDetail'>"+val+"</h5></div><div class='col-xs-2 col-sm-1 pull-right'><a data-container='body' data-toggle='popover' data-placement='left' data-content=\"<a href='tel:"+val+"'><button class='btn btn-primary'>Call</button></a>\" data-html='true'><span class='glyphicon glyphicon-phone-alt Icon'></span></a></div></div>";
                                                                         break;
-                                                                    case "BSNL_Centrex":
+                                                                    case "Office_Centrex":
                                                                         parentBodyString += "<div class='row listItems'><div class='col-xs-10 col-sm-11 pull-left'><h4 class='infoTitleLabel'>BSNL Centrex (Office)</h4><h5 class='infoTitleDetail'>"+val+"</h5></div><div class='col-xs-2 col-sm-1 pull-right'><span class='glyphicon glyphicon-phone-alt Icon'></span></div></div>";
                                                                         break;
                                                                 }
@@ -243,7 +243,7 @@ $(document).ready(function() {
                                                                     case "Residence_Phone":
                                                                         parentBodyString += "<div class='row listItems'><div class='col-xs-10 col-sm-11 pull-left'><h4 class='infoTitleLabel'>Residence Phone</h4><h5 class='infoTitleDetail'>"+val+"</h5></div><div class='col-xs-2 col-sm-1 pull-right'><a data-container='body' data-toggle='popover' data-placement='left' data-content=\"<a href='tel:"+val+"'><button class='btn btn-primary'>Call</button></a>\" data-html='true'><span class='glyphicon glyphicon-earphone Icon'></span></a></div></div>";
                                                                         break;
-                                                                    case "BSNL_Centrex":
+                                                                    case "Residence_Centrex":
                                                                         parentBodyString += "<div class='row listItems'><div class='col-xs-10 col-sm-11 pull-left'><h4 class='infoTitleLabel'>BSNL Centrex (Home)</h4><h5 class='infoTitleDetail'>"+val+"</h5></div><div class='col-xs-2 col-sm-1 pull-right'><span class='glyphicon glyphicon-phone-alt Icon'></span></div></div>";
                                                                         break;
                                                                 }
