@@ -126,6 +126,10 @@ a:hover {
     display: inherit;
 }
 
+#search_icon {
+    background-color: transparent;
+}
+
 /* Members Page */
 .memberImgAndData {
     border-style: outset;
@@ -202,6 +206,10 @@ a:hover {
 
 .pastLeadersImgBlock {
     padding-right: 0;
+}
+
+.pastLeadersTextBlock {
+    margin-top: 0.2em;
 }
 
 .noLinkMember {
@@ -303,15 +311,28 @@ a:hover {
     font-weight: bolder;
 }
 
-.spouseInfoTitleLabel {
-    font-size: 1.3em;
+.spouseInfoTitleLabel, .kidsParentProfileLabel {
     font-weight: bold;
     color: forestgreen;
+}
+
+.spouseInfoTitleLabel {
+    font-size: 1.3em;
 }
 
 .spouseInfoTitleDetail {
     font-size: 1.3em;
     color: forestgreen;
+}
+
+.childrenLabel {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.kidsParentProfileLabel {
+    margin-top: 0.65em;
+    margin-bottom: 0.65em;
 }
 
 .infoTitleLabel {
@@ -343,10 +364,6 @@ a:hover {
     font-size: 1em;
 }
 
-.thumbnail {
-    padding: 10px 4px 10px 10px;
-}
-
 .detailContent {
     margin-top: 2em;
 }
@@ -371,6 +388,11 @@ span.Icon {
 
 #kidsBodyModal {
     padding: 0;
+}
+
+.kidsModalHeaderText {
+    margin-top: 0.7em;
+    margin-bottom: 0.7em;
 }
 
 #kidsFooterModal {
@@ -409,6 +431,19 @@ span.Icon {
     border-right-color: #ffffff;
     border-bottom-color: #ffffff;
     padding-top: 1.5em;
+    padding-bottom: 0.5em;
+    margin-left: 0em;
+    margin-right: 0em;
+}
+
+.kidsSearchBlock {
+    border-style: outset;
+    border-radius: 1.5em;
+    border-top-color: #e7e7e7;
+    border-left-color: #e7e7e7;
+    border-right-color: #ffffff;
+    border-bottom-color: #ffffff;
+    padding-top: 0.5em;
     padding-bottom: 0.5em;
     margin-left: 0em;
     margin-right: 0em;

@@ -3,7 +3,14 @@ var searchMiniApp = {
         $("#memberName").val("");
         $("#bloodGroup").val("");
         $("#memberOccupation").val("");
+        $('#searchModal').on('shown.bs.modal', function (e) {
+            localStorage.setItem("openModal","#searchModal");
+        });
         $('#searchModal').modal('show');
+    },
+    closeSearchModal: function() {
+        $('#searchModal').modal('hide');
+        localStorage.removeItem("openModal");
     },
     validateSearchForm: function() {
         if($("#memberName").val() == "" && $("#bloodGroup").val() == "" && $("#memberOccupation").val() == "") {
@@ -152,11 +159,11 @@ var searchMiniApp = {
         if(kidsResults.id.length > 0) {
             var resultHTML = "";
             for(var i=0, dataLength=kidsResults.id.length; i<dataLength; i++) {
-                resultHTML += "<br/><div class='searchBlock'><div class='row'><div class='col-xs-10 col-xs-offset-1'><img src='"+imgDir+kidsResults.id[i]+".jpg' class='img-responsive' onerror='pageSearchResults.imgError(this)'></div></div><br/><div class='row'><div class='col-xs-12'><a onclick='pageSearchResults.getKidsModal("+kidsResults.id[i]+")' class='memberLink'><span>"+kidsResults.name[i]+"</span></a></div></div></div>";
+                resultHTML += "<br/><div class='kidsSearchBlock'><div class='row'><div class='col-xs-12'><a onclick='pageSearchResults.getKidsModal("+kidsResults.id[i]+")' class='memberLink'><span>"+kidsResults.name[i]+"</span></a></div></div></div>";
             }
             localStorage.setItem("kidsResultsData", resultHTML);
         } else {
-            localStorage.setItem("kidsResultsData", "<div><h4>No kids with the specified search criteria.</h4></div>");
+            localStorage.setItem("kidsResultsData", "<div><h4>No children with the specified search criteria.</h4></div>");
         }
         
         app.setBackPage(app.getCurrentPage());

@@ -33,12 +33,12 @@ var pageSearchResults = {
                     tx.executeSql(buildKidsDataQuery, [],
                         function(tx, r) {
                             var kidsData = r.rows.item(0);
-                            kidsHeaderString += "<div class='row'><div class='col-xs-4'><img src='img/customer.png' class='thumbnail'></div><div class='col-xs-8'>";
+                            kidsHeaderString += "<div class='row'><div class='col-xs-12' align='center'>";
                             $.each(kidsData, function(index, val) {
                                 if(val != null) {
                                     switch(index) {
                                         case "Name":
-                                            kidsHeaderString += "<div class='detailParentName'>"+val+"</div>";
+                                            kidsHeaderString += "<h2 class='kidsModalHeaderText'>"+val+"</h2>";
                                             break;
                                         case "DOB":
                                             kidsBodyString += "<div class='row kidsItems'><div class='col-xs-10 col-sm-11 pull-left'><h4  class='infoTitleLabel'>Date of Birth</h4><h5 class='infoTitleDetail'>"+val+"</h5></div><div class='col-xs-2 col-sm-1 pull-right'><span class='glyphicon glyphicon-gift Icon'></span></div></div>";
@@ -71,6 +71,10 @@ var pageSearchResults = {
                 app.dbQueryError
             );
         });
+    },
+    closeKidsModal: function() {
+        $('#kidsModal').modal('hide');
+        localStorage.removeItem("openModal");
     }
 }
 $(document).ready(function() {
@@ -82,6 +86,7 @@ $(document).ready(function() {
     $("#kidsResultsCount").text(localStorage.getItem("kidsResultsCount"));
     $('body').removeClass();
     $('#kidsModal').on('shown.bs.modal', function (e) {
+        localStorage.setItem("openModal","#kidsModal");
         $("[data-toggle='popover']").popover();
     });
 });
