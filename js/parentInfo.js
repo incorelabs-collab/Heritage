@@ -215,8 +215,13 @@ $(document).ready(function() {
                                                                         parentBodyString += "<div class='row listItems'><div class='col-xs-10 col-sm-11 pull-left'><h4 class='infoTitleLabel'>Office Centrex</h4><h5 class='infoTitleDetail'>"+val+"</h5></div><div class='col-xs-2 col-sm-1 pull-right'><span class='glyphicon glyphicon-phone-alt Icon'></span></div></div>";
                                                                         break;
                                                                 }
+                                                            } else if (index == "off_addr_pin") {
+                                                                if(flag) {
+                                                                    parentBodyString += "</h5></div><div class='col-xs-2 col-sm-1 pull-right'><span class='glyphicon glyphicon-briefcase Icon'></span></div></div>";
+                                                                }
                                                             }
                                                         });
+                                                        flag = false;
                                                         $.each(commonData, function(index, val) {
                                                             if(val != null) {
                                                                 switch(index) {
@@ -246,6 +251,10 @@ $(document).ready(function() {
                                                                     case "Residence_Centrex":
                                                                         parentBodyString += "<div class='row listItems'><div class='col-xs-10 col-sm-11 pull-left'><h4 class='infoTitleLabel'>Residence Centrex</h4><h5 class='infoTitleDetail'>"+val+"</h5></div><div class='col-xs-2 col-sm-1 pull-right'><span class='glyphicon glyphicon-phone-alt Icon'></span></div></div>";
                                                                         break;
+                                                                }
+                                                            } else if (index == "res_addr_pin") {
+                                                                if(flag) {
+                                                                    parentBodyString += "</h5></div><div class='col-xs-2 col-sm-1 pull-right'><span class='glyphicon glyphicon-home Icon'></span></div></div>";
                                                                 }
                                                             }
                                                         });
