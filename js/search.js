@@ -168,6 +168,7 @@ var searchMiniApp = {
         
         app.setBackPage(app.getCurrentPage());
         $('#searchModal').modal('hide');
+        localStorage.removeItem("openModal");
         setTimeout(function () {
             app.displayPage("search_results.html");
         },100);
