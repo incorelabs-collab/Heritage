@@ -148,7 +148,7 @@ $(document).ready(function() {
                                                 tx.executeSql(buildKidsNameQuery, [],
                                                     function(tx, r) {
                                                         if(r.rows.length > 0) {
-                                                            kidsOnParentString += "<div class='container-fluid listItems bg-primary'><div class='col-xs-12 col-sm-12 pull-left' align='center'><h2 class='childrenLabel'>Children</h2></div></div><div class='container-fluid'>";
+                                                            kidsOnParentString += "<div class='container-fluid listItems bg-primary'><div class='col-xs-12 col-sm-12' align='center'><h2 class='childrenLabel'>Children</h2></div></div><div class='container-fluid'>";
                                                             for(var i =0;i< r.rows.length; i++) {
                                                                 kidsOnParentString += "<div class='row listItems'><a onclick='pageParentInfo.getKidsModal("+r.rows.item(i).id+")'><div class='col-xs-10 col-sm-11 pull-left'><h3 class='kidsParentProfileLabel'>"+r.rows.item(i).Name+"</h3></div><div class='col-xs-2 col-sm-1 pull-right'><span class='glyphicon glyphicon-chevron-right Icon'></span></div></a></div>";
                                                             }
